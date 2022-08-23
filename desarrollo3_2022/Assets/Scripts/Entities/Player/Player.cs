@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Entities.Player
 {
@@ -15,6 +16,9 @@ namespace Entities.Player
         [Tooltip("Number of jumps allowed in the air")]
         [SerializeField] private int allowJumpTimesOnAir = 0;
 
+        [Header("Unity events"), Tooltip("final jump events")]
+        [SerializeField] private UnityEvent finalJump = null;
+
         /// Horizontal input
         private float inputHorizontal = 0;
         /// If the player press the jump key
@@ -23,8 +27,10 @@ namespace Entities.Player
         private bool faceRight = true;
         /// If the player touches the ground
         private bool isGrounded = false;
-        /// Conteo de los saltos actuales
+        /// Current jump count
         private int airJumpCount = 0;
+        /// If the player has already jump
+        private bool hasJump = false;
 
         /// Rigidbody parameter
         private Rigidbody2D rigidBody = null;
@@ -104,6 +110,7 @@ namespace Entities.Player
             rigidBody.velocity = Vector2.up * jumpUpSpeed;
             jumpPressed = false;
             isGrounded = false;
+            hasJump = true;
         }
 
         /// <summary>
@@ -144,6 +151,12 @@ namespace Entities.Player
             {
                 isGrounded = true;
                 airJumpCount = 0;
+
+                if (hasJump)
+                {
+                    finalJump?.Invoke();
+                    hasJump = false;
+                }
             }
         }
     }

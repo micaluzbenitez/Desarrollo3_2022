@@ -163,8 +163,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 519420032}
-  shakeDuration: 0.5
-  shakeAmount: 0.2
+  shakeDuration: 0.2
+  shakeAmount: 0.05
   decreaseFactor: 1
 --- !u!20 &519420031
 Camera:
@@ -1055,6 +1055,34 @@ PrefabInstance:
     - target: {fileID: 167022689876299536, guid: 3e6e2c4e4d2f58a47a1c4196562c83ae, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 167022689876299539, guid: 3e6e2c4e4d2f58a47a1c4196562c83ae, type: 3}
+      propertyPath: finalJump.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 167022689876299539, guid: 3e6e2c4e4d2f58a47a1c4196562c83ae, type: 3}
+      propertyPath: finalJump.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 167022689876299539, guid: 3e6e2c4e4d2f58a47a1c4196562c83ae, type: 3}
+      propertyPath: finalJump.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 519420030}
+    - target: {fileID: 167022689876299539, guid: 3e6e2c4e4d2f58a47a1c4196562c83ae, type: 3}
+      propertyPath: finalJump.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 167022689876299539, guid: 3e6e2c4e4d2f58a47a1c4196562c83ae, type: 3}
+      propertyPath: finalJump.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: StartShake
+      objectReference: {fileID: 0}
+    - target: {fileID: 167022689876299539, guid: 3e6e2c4e4d2f58a47a1c4196562c83ae, type: 3}
+      propertyPath: finalJump.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Toolbox.CameraShake, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 167022689876299539, guid: 3e6e2c4e4d2f58a47a1c4196562c83ae, type: 3}
+      propertyPath: finalJump.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 167022689876299540, guid: 3e6e2c4e4d2f58a47a1c4196562c83ae, type: 3}
       propertyPath: m_Color.b

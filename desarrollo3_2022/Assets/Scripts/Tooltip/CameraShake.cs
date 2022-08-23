@@ -25,8 +25,6 @@ namespace Toolbox
 		/// </summary>
 		private void Update()
 		{
-			if (Input.GetKeyDown(KeyCode.M)) StartShake();
-
 			if (shake)
 			{
 				if (shakeTimer > 0)
