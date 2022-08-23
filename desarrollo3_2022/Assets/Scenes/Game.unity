@@ -219,7 +219,7 @@ GameObject:
   - component: {fileID: 644375008}
   - component: {fileID: 644375007}
   m_Layer: 0
-  m_Name: Square (3)
+  m_Name: Floor (3)
   m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -350,7 +350,7 @@ GameObject:
   - component: {fileID: 671533830}
   - component: {fileID: 671533829}
   m_Layer: 0
-  m_Name: Square (1)
+  m_Name: Floor (1)
   m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -648,7 +648,7 @@ GameObject:
   - component: {fileID: 1483738837}
   - component: {fileID: 1483738836}
   m_Layer: 0
-  m_Name: Square (2)
+  m_Name: Floor (2)
   m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -800,8 +800,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 2
   jumpUpSpeed: 5
-  allowJumpTimes: 3
   fallGravityMultiplier: 2
+  allowJumpTimesOnAir: 1
 --- !u!50 &1729400875
 Rigidbody2D:
   serializedVersion: 4
@@ -818,7 +818,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: cb08596f2aa25124592c2c8f3b7dd764, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -927,7 +927,7 @@ GameObject:
   - component: {fileID: 1864570995}
   - component: {fileID: 1864570994}
   m_Layer: 0
-  m_Name: Square
+  m_Name: Floor
   m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

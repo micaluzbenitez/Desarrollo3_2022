@@ -13,6 +13,8 @@ namespace Entities.Player
         public float jumpUpSpeed = 5f;
         [Tooltip("Multiple down acceleration")]
         public float fallGravityMultiplier = 2f;
+        [Tooltip("Number of jumps allowed in the air")]
+        public int allowJumpTimesOnAir = 0;
 
         /// Horizontal input
         private float inputHorizontal = 0;
@@ -22,6 +24,8 @@ namespace Entities.Player
         private bool faceRight = true;
         /// If the player touches the ground
         private bool isGrounded = false;
+        /// Conteo de los saltos actuales
+        private int airJumpCount = 0;
 
         /// Rigidbody parameter
         private Rigidbody2D rigidBody = null;
@@ -42,7 +46,10 @@ namespace Entities.Player
         /// </summary>
         private void Update()
         {
+            /// Move
             inputHorizontal = Input.GetAxisRaw("Horizontal");
+
+            /// Jump
             if (Input.GetButtonDown("Jump")) jumpPressed = true;
         }
 
@@ -52,7 +59,7 @@ namespace Entities.Player
         private void FixedUpdate()
         {
             Move();
-            Jump();
+            CheckJump();
             SwitchAnimState();
         }
 
@@ -66,18 +73,38 @@ namespace Entities.Player
         }
 
         /// <summary>
-        /// Jump
+        /// Check jump conditions
         /// </summary>
-        private void Jump()
+        private void CheckJump()
         {
             if (jumpPressed)
             {
-                rigidBody.velocity = Vector2.up * jumpUpSpeed;
-                jumpPressed = false;
+                if (isGrounded) /// Ground jump
+                {
+                    Jump();
+                }
+                else
+                {
+                    if (airJumpCount < allowJumpTimesOnAir) /// Air jump
+                    {
+                        Jump();
+                        airJumpCount++;
+                    }
+                }
             }
 
             /// Improve movement
             if (rigidBody.velocity.y < 0) rigidBody.velocity += Vector2.up * Physics2D.gravity.y * (fallGravityMultiplier - 1) * Time.fixedDeltaTime;
+        }
+
+        /// <summary>
+        /// Jump
+        /// </summary>
+        private void Jump()
+        {
+            rigidBody.velocity = Vector2.up * jumpUpSpeed;
+            jumpPressed = false;
+            isGrounded = false;
         }
 
         /// <summary>
@@ -115,7 +142,10 @@ namespace Entities.Player
         private void OnCollisionEnter2D(Collision2D collision)
         {
             if (collision.gameObject.tag == "Floor")
+            {
                 isGrounded = true;
+                airJumpCount = 0;
+            }
         }
     }
 }
