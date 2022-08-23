@@ -26,7 +26,7 @@ namespace Entities.Player
         /// If the player looks to the right or not
         private bool faceRight = true;
         /// If the player touches the ground
-        private bool isGrounded = false;
+        private bool isGrounded = true;
         /// Current jump count
         private int airJumpCount = 0;
         /// If the player has already jump
@@ -65,7 +65,7 @@ namespace Entities.Player
         {
             Move();
             CheckJump();
-            SwitchAnimState();
+            //SwitchAnimState();
         }
 
         /// <summary>
@@ -157,6 +157,8 @@ namespace Entities.Player
                     finalJump?.Invoke();
                     hasJump = false;
                 }
+
+                Debug.Log(rigidBody.velocity.y);
             }
         }
     }

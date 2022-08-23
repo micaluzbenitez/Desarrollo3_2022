@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 namespace Toolbox
@@ -13,42 +14,37 @@ namespace Toolbox
 		[Tooltip("Rate at which shake decreases")]
 		[SerializeField] private float decreaseFactor = 1.0f;
 
-		/// Camera original position
-		private Vector3 originalPos = Vector3.zero;
 		/// If the camera is shaking or not
-		private bool shake = false;
-		/// Shake timer
-		private float shakeTimer = 0;
-
-		/// <summary>
-		/// Camera shake
-		/// </summary>
-		private void Update()
-		{
-			if (shake)
-			{
-				if (shakeTimer > 0)
-				{
-					mainCamera.localPosition = originalPos + Random.insideUnitSphere * shakeAmount;
-					shakeTimer -= Time.deltaTime * decreaseFactor;
-				}
-				else
-				{
-					shakeTimer = 0f;
-					mainCamera.localPosition = originalPos;
-					shake = false;
-				}
-			}
-		}
+		private IEnumerator shake;
 
 		/// <summary>
 		/// Call this to active the camera shake
 		/// </summary>
 		public void StartShake()
         {
+
+			if (shake != null) StopCoroutine(shake);
+			shake = Shake();
+			StartCoroutine(shake);
+		}
+
+		private IEnumerator Shake()
+        {
+			Vector3 originalPos = Vector3.zero;
+			float shakeTimer = 0;
+
 			originalPos = mainCamera.localPosition;
 			shakeTimer = shakeDuration;
-			shake = true;
-		}
+
+			while (shakeTimer > 0)
+			{
+				mainCamera.localPosition = originalPos + Random.insideUnitSphere * shakeAmount;
+				shakeTimer -= Time.deltaTime * decreaseFactor;
+				yield return null;
+			}
+
+			shakeTimer = 0f;
+			mainCamera.localPosition = originalPos;
+        }
 	}
 }
