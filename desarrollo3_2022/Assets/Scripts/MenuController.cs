@@ -6,9 +6,12 @@ using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour
 {
-    [SerializeField] private CanvasGroup startingPanel;
+    [Header("Menu panel")]
+    [SerializeField] private CanvasGroup startingPanel = null;
+    [Header("Game scene")]
+    [SerializeField] private string gameSceneName = "";
 
-    private CanvasGroup actualPanel;
+    private CanvasGroup actualPanel = null;
 
     private void Awake()
     {
@@ -75,7 +78,7 @@ public class MenuController : MonoBehaviour
 
     public void LoadGame()
     {
-        SceneManager.LoadScene("Gameplay");
+        SceneManager.LoadScene(gameSceneName);
     }
 
 }
