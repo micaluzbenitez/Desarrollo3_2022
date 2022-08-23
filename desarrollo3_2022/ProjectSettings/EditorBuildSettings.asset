@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Game.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/Provisory/Guido.unity
+    guid: e6b5fc35a9547f442b0461a8210e5fb1
+  - enabled: 1
+    path: Assets/Scenes/Provisory/Mica.unity
+    guid: 9beb05ed9c00e0d42bda4fbfe0c012ab
   m_configObjects: {}
