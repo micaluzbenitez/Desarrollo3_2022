@@ -17,22 +17,26 @@ namespace Toolbox
 		private Vector3 originalPos = Vector3.zero;
 		/// If the camera is shaking or not
 		private bool shake = false;
+		/// Shake timer
+		private float shakeTimer = 0;
 
 		/// <summary>
 		/// Camera shake
 		/// </summary>
 		private void Update()
 		{
+			if (Input.GetKeyDown(KeyCode.M)) StartShake();
+
 			if (shake)
 			{
-				if (shakeDuration > 0)
+				if (shakeTimer > 0)
 				{
 					mainCamera.localPosition = originalPos + Random.insideUnitSphere * shakeAmount;
-					shakeDuration -= Time.deltaTime * decreaseFactor;
+					shakeTimer -= Time.deltaTime * decreaseFactor;
 				}
 				else
 				{
-					shakeDuration = 0f;
+					shakeTimer = 0f;
 					mainCamera.localPosition = originalPos;
 					shake = false;
 				}
@@ -45,6 +49,7 @@ namespace Toolbox
 		public void StartShake()
         {
 			originalPos = mainCamera.localPosition;
+			shakeTimer = shakeDuration;
 			shake = true;
 		}
 	}

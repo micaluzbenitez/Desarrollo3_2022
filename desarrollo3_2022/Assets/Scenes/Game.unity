@@ -163,8 +163,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 519420032}
-  shakeDuration: 1
-  shakeAmount: 0.7
+  shakeDuration: 0.5
+  shakeAmount: 0.2
   decreaseFactor: 1
 --- !u!20 &519420031
 Camera:
