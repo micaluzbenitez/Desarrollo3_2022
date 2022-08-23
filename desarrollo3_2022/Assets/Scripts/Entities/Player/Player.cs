@@ -1,20 +1,19 @@
-using System.Collections;
+using System;
 using UnityEngine;
-using TMPro;
 
 namespace Entities.Player
 {
     public class Player : MonoBehaviour
     {
         [Header("Move data"), Tooltip("Horizontal movement speed")]
-        public float moveSpeed = 2f;
+        [SerializeField] private float moveSpeed = 2f;
 
         [Header("Jump data"), Tooltip("Jump speed")]
-        public float jumpUpSpeed = 5f;
+        [SerializeField] private float jumpUpSpeed = 5f;
         [Tooltip("Multiple down acceleration")]
-        public float fallGravityMultiplier = 2f;
+        [SerializeField] private float fallGravityMultiplier = 2f;
         [Tooltip("Number of jumps allowed in the air")]
-        public int allowJumpTimesOnAir = 0;
+        [SerializeField] private int allowJumpTimesOnAir = 0;
 
         /// Horizontal input
         private float inputHorizontal = 0;
