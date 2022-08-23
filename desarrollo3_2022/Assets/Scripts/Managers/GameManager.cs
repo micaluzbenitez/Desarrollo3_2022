@@ -1,34 +1,34 @@
 using UnityEngine;
 
 
-    public class GameManager : MonoBehaviour
-    {
-        #region VARIABLES
-        #region SERIALIZED VARIABLES
+public class GameManager : MonoBehaviour
+{
+    #region VARIABLES
+    #region SERIALIZED VARIABLES
 
-        #endregion
+    #endregion
 
-        #region STATIC VARIABLES
-        public static bool GameRunning { get; private set; } = true;
-        #endregion
+    #region STATIC VARIABLES
+    public static bool GameRunning { get; private set; } = true;
+    #endregion
 
-        #region PRIVATE VARIABLES
+    #region PRIVATE VARIABLES
 
-        #endregion
-        #endregion
+    #endregion
+    #endregion
 
-        #region METHODS
-        #region PUBLIC METHODS
+    #region METHODS
+    #region PUBLIC METHODS
 
-        #endregion
+    #endregion
 
-        #region STATIC METHODS
+    #region STATIC METHODS
 
-        #endregion
+    #endregion
 
-        #region PRIVATE METHODS
+    #region PRIVATE METHODS
 
-        #endregion
-        #endregion
-    }
+    #endregion
+    #endregion
+}
 
