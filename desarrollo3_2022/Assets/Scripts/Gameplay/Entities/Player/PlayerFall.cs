@@ -10,7 +10,7 @@ namespace Entities.Player
 
         private void OnTriggerExit2D(Collider2D collision)
         {
-            if (collision.gameObject.tag == "Floor") isFalling = true;
+            if (collision.gameObject.CompareTag("Floor")) isFalling = true;
         }
     }
 }

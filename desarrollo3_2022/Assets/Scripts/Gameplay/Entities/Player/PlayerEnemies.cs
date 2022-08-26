@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Entities.Enemies;
+using Entities.Enemies.Shot;
 
 namespace Entities.Player
 {
@@ -9,9 +10,16 @@ namespace Entities.Player
     {
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            Enemy enemy = collision.gameObject.GetComponent<Enemy>();
-
-            if (enemy) LoseLife(enemy.GetDamage());
+            if (collision.gameObject.CompareTag("Enemy"))
+            {
+                Enemy enemy = collision.gameObject.GetComponent<Enemy>();
+                LoseLife(enemy.GetDamage());
+            }
+            else if (collision.gameObject.CompareTag("Shot"))
+            {
+                Shot shot = collision.gameObject.GetComponent<Shot>();
+                LoseLife(shot.Damage);
+            }
         }
     }
 }

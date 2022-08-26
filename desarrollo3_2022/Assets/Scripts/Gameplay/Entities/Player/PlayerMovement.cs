@@ -106,7 +106,7 @@ namespace Entities.Player
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            if (collision.gameObject.tag == "Floor")
+            if (collision.gameObject.CompareTag("Floor"))
             {
                 isGrounded = true;
                 airJumpCount = 0;

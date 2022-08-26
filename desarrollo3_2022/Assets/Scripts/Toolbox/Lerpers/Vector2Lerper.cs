@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Common.Toolbox.Lerpers
+namespace Toolbox.Lerpers
 {
     public class Vector2Lerper : Lerper<Vector2>
     {
