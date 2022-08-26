@@ -26,9 +26,8 @@ namespace Entities.Player
         private Rigidbody2D rigidBody = null;
         private Animator animator = null;
 
-        protected override void Awake()
+        private void Awake()
         {
-            base.Awake();
             rigidBody = GetComponent<Rigidbody2D>();
             animator = GetComponent<Animator>();
         }

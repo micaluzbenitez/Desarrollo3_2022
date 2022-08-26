@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Toolbox;
 using Toolbox.Lerpers;
 
 namespace Entities.Enemies
@@ -14,19 +15,34 @@ namespace Entities.Enemies
         [Tooltip("Target to shoot")]
         [SerializeField] private Transform target = null;
 
+        [Header("Shot data")]
+        [SerializeField] private int timePerShot = 0;
+
         private Vector2Lerper shotLerper = new Vector2Lerper();
+        private Timer timerPerShot = new Timer();
 
         protected override void Awake()
         {
             base.Awake();
             shot.Damage = damage;
+            timerPerShot.SetTimer(timePerShot, Timer.TIMER_MODE.DECREASE, true);
         }
 
         private void Update()
         {
+            UpdateTimerPerShot();
             UpdateShotLerper();
+        }
 
-            if (Input.GetKeyDown(KeyCode.M)) Shot();
+        private void UpdateTimerPerShot()
+        {
+            if (timerPerShot.Active) timerPerShot.UpdateTimer();
+
+            if (timerPerShot.ReachedTimer())
+            {
+                Shot();
+                timerPerShot.ActiveTimer();
+            }
         }
 
         private void Shot()

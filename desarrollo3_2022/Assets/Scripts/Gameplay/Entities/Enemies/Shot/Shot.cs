@@ -15,7 +15,7 @@ namespace Entities.Enemies.Shot
         public int Damage { get => damage; set => damage = value; }
         public bool CollidePlayer { get => collidePlayer; set => collidePlayer = value; }
 
-        private void OnCollisionEnter2D(Collision2D collision)
+        private void OnTriggerEnter2D(Collider2D collision)
         {
             if (collision.gameObject.CompareTag("Player")) collidePlayer = true;
         }

@@ -15,7 +15,11 @@ namespace Entities.Player
                 Enemy enemy = collision.gameObject.GetComponent<Enemy>();
                 LoseLife(enemy.GetDamage());
             }
-            else if (collision.gameObject.CompareTag("Shot"))
+        }
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.gameObject.CompareTag("Shot"))
             {
                 Shot shot = collision.gameObject.GetComponent<Shot>();
                 LoseLife(shot.Damage);
