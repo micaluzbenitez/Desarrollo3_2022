@@ -7,7 +7,32 @@ namespace Entities.Enemies
     public class Enemy : MonoBehaviour
     {
         [Header("Enemy data"), Tooltip("Damage dealt to the player if touched")]
-        [SerializeField] private int damage = 0;
+        [SerializeField] protected int damage = 0;
+        [Tooltip("Horizontal speed")]
+        [SerializeField] protected float speed = 0;
+
+        protected Rigidbody2D rigidBody = null;
+
+        protected virtual void Awake()
+        {
+            rigidBody = GetComponent<Rigidbody2D>();
+        }
+
+        protected virtual void FixedUpdate()
+        {
+            rigidBody.velocity = new Vector2(speed, rigidBody.velocity.y); /// Move
+        }
+
+        protected virtual void Turn()
+        {
+            transform.eulerAngles = new Vector3(0, transform.eulerAngles.y + 180, 0);
+            speed *= -1;
+        }
+
+        protected virtual void OnCollisionEnter2D(Collision2D collision)
+        {
+            if (collision.gameObject.CompareTag("Wall")) Turn();
+        }
 
         public int GetDamage()
         {

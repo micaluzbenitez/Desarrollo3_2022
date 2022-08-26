@@ -6,6 +6,6 @@ namespace Entities.Enemies
 {
     public class Mine : Enemy
     {
-        
+
     }
 }
