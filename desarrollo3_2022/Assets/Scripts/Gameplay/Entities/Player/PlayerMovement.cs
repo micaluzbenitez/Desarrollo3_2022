@@ -4,7 +4,7 @@ using UnityEngine.Events;
 
 namespace Entities.Player
 {
-    public class Player : PlayerFall
+    public class PlayerMovement : PlayerFall
     {
         [Header("Move data"), Tooltip("Horizontal movement speed")]
         [SerializeField] private float moveSpeed = 2f;
