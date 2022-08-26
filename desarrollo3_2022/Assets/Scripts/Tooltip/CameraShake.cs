@@ -17,9 +17,6 @@ namespace Toolbox
 		/// If the camera is shaking or not
 		private IEnumerator shake;
 
-		/// <summary>
-		/// Call this to active the camera shake
-		/// </summary>
 		public void StartShake()
         {
 

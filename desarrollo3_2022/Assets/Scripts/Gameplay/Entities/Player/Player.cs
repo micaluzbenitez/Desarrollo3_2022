@@ -4,63 +4,43 @@ using UnityEngine.Events;
 
 namespace Entities.Player
 {
-    public class Player : MonoBehaviour
+    public class Player : PlayerFall
     {
         [Header("Move data"), Tooltip("Horizontal movement speed")]
         [SerializeField] private float moveSpeed = 2f;
 
         [Header("Jump data"), Tooltip("Jump speed")]
         [SerializeField] private float jumpUpSpeed = 5f;
-        [Tooltip("Multiple down acceleration")]
-        [SerializeField] private float fallGravityMultiplier = 2f;
         [Tooltip("Number of jumps allowed in the air")]
         [SerializeField] private int allowJumpTimesOnAir = 0;
 
         [Header("Unity events"), Tooltip("final jump events")]
         [SerializeField] private UnityEvent finalJump = null;
 
-        /// Horizontal input
-        private float inputHorizontal = 0;
-        /// If the player press the jump key
-        private bool jumpPressed = false;
-        /// If the player looks to the right or not
+        private float horizontalInput = 0;
         private bool faceRight = true;
-        /// If the player touches the ground
+        private bool jumpPressed = false;
         private bool isGrounded = true;
-        /// Current jump count
         private int airJumpCount = 0;
-        /// If the player has already jump
-        private bool hasJump = false;
 
-        /// Rigidbody parameter
         private Rigidbody2D rigidBody = null;
-        /// Animator parameter
         private Animator animator = null;
 
-        /// <summary>
-        /// Initialize private parameters
-        /// </summary>
         private void Start()
         {
             rigidBody = GetComponent<Rigidbody2D>();
             animator = GetComponent<Animator>();
         }
 
-        /// <summary>
-        /// Player's input
-        /// </summary>
         private void Update()
         {
             /// Move
-            inputHorizontal = Input.GetAxisRaw("Horizontal");
+            horizontalInput = Input.GetAxisRaw("Horizontal");
 
             /// Jump
             if (Input.GetButtonDown("Jump")) jumpPressed = true;
         }
 
-        /// <summary>
-        /// Player's movement
-        /// </summary>
         private void FixedUpdate()
         {
             Move();
@@ -68,18 +48,12 @@ namespace Entities.Player
             //SwitchAnimState();
         }
 
-        /// <summary>
-        /// Horizontal movement
-        /// </summary>
         private void Move()
         {
-            rigidBody.velocity = new Vector2(inputHorizontal * moveSpeed, rigidBody.velocity.y);
-            if (inputHorizontal > 0 && !faceRight || inputHorizontal < 0 && faceRight) Flip();
+            rigidBody.velocity = new Vector2(horizontalInput * moveSpeed, rigidBody.velocity.y);
+            if (horizontalInput > 0 && !faceRight || horizontalInput < 0 && faceRight) Flip();
         }
 
-        /// <summary>
-        /// Check jump conditions
-        /// </summary>
         private void CheckJump()
         {
             if (jumpPressed)
@@ -97,25 +71,15 @@ namespace Entities.Player
                     }
                 }
             }
-
-            /// Improve movement
-            if (rigidBody.velocity.y < 0) rigidBody.velocity += Vector2.up * Physics2D.gravity.y * (fallGravityMultiplier - 1) * Time.fixedDeltaTime;
         }
 
-        /// <summary>
-        /// Jump
-        /// </summary>
         private void Jump()
         {
             rigidBody.velocity = Vector2.up * jumpUpSpeed;
             jumpPressed = false;
             isGrounded = false;
-            hasJump = true;
         }
 
-        /// <summary>
-        /// Horizontally rotate the player sprite depending on if it goes left or right
-        /// </summary>
         private void Flip()
         {
             faceRight = !faceRight;
@@ -125,26 +89,20 @@ namespace Entities.Player
             transform.localScale = scale;
         }
 
-        /// <summary>
-        /// Update animations
-        /// </summary>
         private void SwitchAnimState()
         {
-            /// Correr
-            if (inputHorizontal == 0) animator.SetBool("Running", false);
+            /// Run
+            if (horizontalInput == 0) animator.SetBool("Running", false);
             else animator.SetBool("Running", true);
 
-            /// Salto
+            /// Jump
             animator.SetFloat("SpeedH", Mathf.Abs(rigidBody.velocity.x));
             animator.SetFloat("SpeedV", rigidBody.velocity.y);
 
-            /// Si esta tocando el piso
+            /// Grounded
             animator.SetBool("IsGrounded", isGrounded);
         }
 
-        /// <summary>
-        /// Check if the player is colliding with the floor
-        /// </summary>
         private void OnCollisionEnter2D(Collision2D collision)
         {
             if (collision.gameObject.tag == "Floor")
@@ -152,13 +110,12 @@ namespace Entities.Player
                 isGrounded = true;
                 airJumpCount = 0;
 
-                if (hasJump)
+                /// Camera shake
+                if (isFalling)
                 {
                     finalJump?.Invoke();
-                    hasJump = false;
+                    isFalling = false;
                 }
-
-                Debug.Log(rigidBody.velocity.y);
             }
         }
     }
