@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Entities.Player
 {
-    public class PlayerFall : MonoBehaviour
+    public class PlayerFall : PlayerStats
     {
         protected bool isFalling = false;
 

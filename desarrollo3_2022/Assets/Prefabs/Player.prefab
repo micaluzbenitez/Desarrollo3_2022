@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 167022689876299541}
   - component: {fileID: 167022689876299538}
   - component: {fileID: 167022689876299539}
+  - component: {fileID: 7368222676355870324}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -150,8 +151,31 @@ MonoBehaviour:
   allowJumpTimesOnAir: 1
   finalJump:
     m_PersistentCalls:
-      m_Calls: []
-  isFalling: 0
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: Toolbox.CameraShake, Assembly-CSharp
+        m_MethodName: StartShake
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &7368222676355870324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 167022689876299536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3392b14f430ebf140a6c291ae39c1648, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7296822938535688868
 GameObject:
   m_ObjectHideFlags: 0
@@ -222,4 +246,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0968f31d212110e45944eae90826b73d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isFalling: 0
