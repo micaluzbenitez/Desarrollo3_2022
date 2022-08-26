@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7927739840849598438}
   - component: {fileID: 7927739840849598441}
   - component: {fileID: 7927739840849598440}
-  - component: {fileID: 7927739840849598443}
+  - component: {fileID: 800573429000189281}
   m_Layer: 0
   m_Name: Fish
   m_TagString: Enemy
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 7927739840849598442}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -132,7 +132,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &7927739840849598443
+--- !u!114 &800573429000189281
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -141,11 +141,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 7927739840849598442}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae5848598475d9a45ae921203de8e08f, type: 3}
+  m_Script: {fileID: 11500000, guid: 26d813ac31cc0d942a708c2d1f81f4dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
-  speed: 0
-  platformController: {fileID: 0}
-  distance: 0
-  rightMovement: 0
+  damage: 5
+  speed: 1

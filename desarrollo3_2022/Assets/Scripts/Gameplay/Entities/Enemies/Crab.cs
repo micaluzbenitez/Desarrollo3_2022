@@ -12,8 +12,6 @@ namespace Entities.Enemies
         [SerializeField] private Transform platformController = null;
         [Tooltip("Controller distance down")]
         [SerializeField] private float distance = 0;
-        [Tooltip("If the crab is going to the right")]
-        [SerializeField] private bool rightMovement = false;
 
         private Rigidbody2D rigidBody = null;
 
@@ -24,15 +22,14 @@ namespace Entities.Enemies
 
         private void FixedUpdate()
         {
-            RaycastHit2D platformData = Physics2D.Raycast(platformController.position, Vector2.down, distance);
-            rigidBody.velocity = new Vector2(speed, rigidBody.velocity.y);
+            rigidBody.velocity = new Vector2(speed, rigidBody.velocity.y); /// Move
 
+            RaycastHit2D platformData = Physics2D.Raycast(platformController.position, Vector2.down, distance);
             if (!platformData) Turn();
         }
 
         private void Turn()
         {
-            rightMovement = !rightMovement;
             transform.eulerAngles = new Vector3(0, transform.eulerAngles.y + 180, 0);
             speed *= -1;
         }
