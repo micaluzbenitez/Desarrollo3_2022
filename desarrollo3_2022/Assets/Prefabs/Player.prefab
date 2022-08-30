@@ -177,6 +177,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialLife: 100
+  enemiesTag: Enemy
+  bulletsTag: Bullet
 --- !u!1 &7296822938535688868
 GameObject:
   m_ObjectHideFlags: 0

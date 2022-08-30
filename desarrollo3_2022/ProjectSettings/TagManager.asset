@@ -8,7 +8,7 @@ TagManager:
   - Wall
   - ResetZone
   - Enemy
-  - Shot
+  - Bullet
   layers:
   - Default
   - TransparentFX
