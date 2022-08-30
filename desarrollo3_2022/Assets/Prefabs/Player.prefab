@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -132,7 +132,7 @@ Rigidbody2D:
   m_Material: {fileID: 6200000, guid: cb08596f2aa25124592c2c8f3b7dd764, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!114 &167022689876299539
 MonoBehaviour:
@@ -146,7 +146,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38d2775d25156ee4a97125a290dfdb50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialLife: 0
   moveSpeed: 2
   jumpUpSpeed: 5
   allowJumpTimesOnAir: 1
@@ -177,7 +176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3392b14f430ebf140a6c291ae39c1648, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialLife: 0
+  initialLife: 100
 --- !u!1 &7296822938535688868
 GameObject:
   m_ObjectHideFlags: 0
@@ -190,7 +189,7 @@ GameObject:
   - component: {fileID: 8408775850371797398}
   - component: {fileID: 2360974816489730854}
   m_Layer: 0
-  m_Name: TriggerPlatforms
+  m_Name: PlayerFall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -248,4 +247,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0968f31d212110e45944eae90826b73d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialLife: 0
