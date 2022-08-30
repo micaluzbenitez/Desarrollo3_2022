@@ -1,11 +1,13 @@
+using System;
 using UnityEngine;
-
+using Entities.Player;
 
 public class GameManager : MonoBehaviour
 {
     #region VARIABLES
     #region SERIALIZED VARIABLES
-
+    [SerializeField] public PlayerStats playerStats = null;
+    [SerializeField] public PlayerEnemies playerEnemies = null;
     #endregion
 
     #region STATIC VARIABLES
@@ -27,7 +29,15 @@ public class GameManager : MonoBehaviour
     #endregion
 
     #region PRIVATE METHODS
+    private void OnEnable()
+    {
+        playerEnemies.OnLoseLife += playerStats.LoseLife;
+    }
 
+    private void OnDisable()
+    {
+        playerEnemies.OnLoseLife -= playerStats.LoseLife;
+    }
     #endregion
     #endregion
 }

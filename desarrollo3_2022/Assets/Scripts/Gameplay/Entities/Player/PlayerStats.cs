@@ -7,19 +7,19 @@ namespace Entities.Player
     public class PlayerStats : MonoBehaviour
     {
         [Header("Player data")]
-        [SerializeField] protected int initialLife = 0;
+        [SerializeField] private int initialLife = 0;
 
-        protected int life = 0;
+        //[SerializeField] 
+        private int life = 0;
 
-        protected virtual void Awake()
+        private void Awake()
         {
             life = initialLife;
         }
 
-        protected void LoseLife(int damage)
+        public void LoseLife(int damage)
         {
             life -= damage;
-            Debug.Log("Life: " + life);
         }
     }
 }
