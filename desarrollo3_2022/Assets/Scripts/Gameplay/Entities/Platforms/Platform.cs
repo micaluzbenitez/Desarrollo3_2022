@@ -57,7 +57,7 @@ namespace Entities.Platforms
         }
         private void Elevate()
         {
-            float newY = transform.position.y + elevationSpeed * Time.deltaTime;
+            float newY = transform.position.y + PlatformController.VerticalSpeed * Time.deltaTime;
             transform.position = new Vector3(transform.position.x, newY);
         }
         private void SetRandomX()
