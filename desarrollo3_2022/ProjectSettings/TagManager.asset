@@ -9,6 +9,8 @@ TagManager:
   - ResetZone
   - Enemy
   - Bullet
+  - Shot
+  - Limit
   layers:
   - Default
   - TransparentFX
@@ -16,7 +18,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Limit
   - 
   - 
   - 
