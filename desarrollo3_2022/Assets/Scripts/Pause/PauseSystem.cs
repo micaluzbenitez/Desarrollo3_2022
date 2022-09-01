@@ -6,6 +6,8 @@ using System;
 
 public class PauseSystem : MonoBehaviour
 {
+    [SerializeField] private bool startInPauseState = false;
+
     public static Action<PauseStates> OnPauseStateChange;
     public static bool Paused { get; private set; }
     private void Awake()
@@ -21,7 +23,7 @@ public class PauseSystem : MonoBehaviour
 
     private void Start()
     {
-        Paused = false;
+        Paused = !startInPauseState;
         PauseControl();
     }
 
@@ -44,8 +46,8 @@ public class PauseSystem : MonoBehaviour
     }
     public static void UnPause()
     {
-        Paused = true;
-        Time.timeScale = 0;
+        Paused = false;
+        Time.timeScale = 1;
     }
 
 }

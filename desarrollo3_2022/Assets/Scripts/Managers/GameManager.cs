@@ -43,9 +43,11 @@ public class GameManager : MonoBehaviour
     {
         DeathChecker.OnReachLimit -= EndGame;
     }
+
     private void Start()
     {
         gameOver = false;
+        GameRunning = true;
     }
     private void OnEnable()
     {
@@ -61,7 +63,6 @@ public class GameManager : MonoBehaviour
     {
         gameOver = true;
         GameRunning = false;
-        Debug.Log("Perdiste");
         OnGameOver?.Invoke();
     }
 
