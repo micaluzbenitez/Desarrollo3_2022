@@ -581,7 +581,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 133.85
+  m_fontSize: 134.35
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -851,7 +851,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 90.9
+  m_fontSize: 91.2
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1014,11 +1014,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5453469629715405682, guid: c11c4d96eac2fbc4ea70350f96cc29f1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.75
+      value: -0.84
       objectReference: {fileID: 0}
     - target: {fileID: 5453469629715405682, guid: c11c4d96eac2fbc4ea70350f96cc29f1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.5
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 5453469629715405682, guid: c11c4d96eac2fbc4ea70350f96cc29f1, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1060,10 +1060,6 @@ PrefabInstance:
       propertyPath: finalJump.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 519420030}
-    - target: {fileID: 5453469629715405686, guid: c11c4d96eac2fbc4ea70350f96cc29f1, type: 3}
-      propertyPath: finalJump.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: StartShake
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c11c4d96eac2fbc4ea70350f96cc29f1, type: 3}
 --- !u!114 &626588015 stripped
@@ -1830,7 +1826,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1041037532}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
@@ -2068,7 +2064,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 112.45
+  m_fontSize: 112.85
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2567,7 +2563,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 133.85
+  m_fontSize: 134.35
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -3205,7 +3201,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 124.95
+  m_fontSize: 125.4
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -3353,7 +3349,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 124.95
+  m_fontSize: 125.4
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -3690,7 +3686,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 107.1
+  m_fontSize: 107.45
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -3792,6 +3788,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pausePanel: {fileID: 1468716449626174879}
+  gameOverPanel: {fileID: 1041037534}
   menuSceneName: Menu
 --- !u!1 &6144810308342190819
 GameObject:
@@ -4076,7 +4073,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 62.45
+  m_fontSize: 62.7
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1

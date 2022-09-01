@@ -8,6 +8,7 @@ public class UIController : MonoBehaviour
     #region VARIABLES
     #region SERIALIZED VARIABLES
     [SerializeField] private CanvasGroup pausePanel;
+    [SerializeField] private CanvasGroup gameOverPanel;
 
     [Header("Menu scene")]
     [SerializeField] private string menuSceneName = "";
@@ -34,10 +35,12 @@ public class UIController : MonoBehaviour
     private void Awake()
     {
         PauseSystem.OnPauseStateChange += PausePanelController;
+        GameManager.OnGameOver += GameOverPanelController;
     }
     private void OnDestroy()
     {
         PauseSystem.OnPauseStateChange -= PausePanelController;
+        GameManager.OnGameOver -= GameOverPanelController;
     }
     private void PausePanelController(PauseStates state)
     {
@@ -49,6 +52,10 @@ public class UIController : MonoBehaviour
         {
             ShowPanel(pausePanel);
         }
+    }
+    private void GameOverPanelController()
+    {
+        ShowPanel(gameOverPanel);
     }
     private void ShowPanel(CanvasGroup panel)
     {

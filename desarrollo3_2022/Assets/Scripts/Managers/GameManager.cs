@@ -13,6 +13,9 @@ public class GameManager : MonoBehaviour
 
     #region STATIC VARIABLES
     public static bool GameRunning { get; private set; } = true;
+
+    public static Action OnGameOver;
+
     #endregion
 
     #region PRIVATE VARIABLES
@@ -59,6 +62,7 @@ public class GameManager : MonoBehaviour
         gameOver = true;
         GameRunning = false;
         Debug.Log("Perdiste");
+        OnGameOver?.Invoke();
     }
 
     #endregion

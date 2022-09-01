@@ -85,6 +85,7 @@ GameObject:
   - component: {fileID: 8331373071341191512}
   - component: {fileID: 5453469629715405686}
   - component: {fileID: 3440416414492260881}
+  - component: {fileID: 2530445984071921328}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -99,7 +100,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5453469629715405685}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.75, y: 3.5, z: 0}
   m_LocalScale: {x: 0.75, y: 0.75, z: 1}
   m_Children:
@@ -262,3 +263,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemiesTag: Enemy
   bulletsTag: Bullet
+--- !u!114 &2530445984071921328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5453469629715405685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81f085c89be8f804e8d80513cf402985, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
