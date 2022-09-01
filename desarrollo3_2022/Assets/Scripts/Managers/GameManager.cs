@@ -7,7 +7,8 @@ public class GameManager : MonoBehaviour
     #region VARIABLES
     #region SERIALIZED VARIABLES
     [SerializeField] public PlayerStats playerStats = null;
-    [SerializeField] public PlayerEnemies playerEnemies = null;
+    [SerializeField] public PlayerEnemies playerEnemies = null; 
+
     #endregion
 
     #region STATIC VARIABLES
@@ -15,6 +16,8 @@ public class GameManager : MonoBehaviour
     #endregion
 
     #region PRIVATE VARIABLES
+
+    private bool gameOver = false;
 
     #endregion
     #endregion
@@ -29,6 +32,18 @@ public class GameManager : MonoBehaviour
     #endregion
 
     #region PRIVATE METHODS
+    private void Awake()
+    {
+        DeathChecker.OnReachLimit += EndGame;
+    }
+    private void OnDestroy()
+    {
+        DeathChecker.OnReachLimit -= EndGame;
+    }
+    private void Start()
+    {
+        gameOver = false;
+    }
     private void OnEnable()
     {
         playerEnemies.OnLoseLife += playerStats.LoseLife;
@@ -38,6 +53,14 @@ public class GameManager : MonoBehaviour
     {
         playerEnemies.OnLoseLife -= playerStats.LoseLife;
     }
+
+    private void EndGame()
+    {
+        gameOver = true;
+        GameRunning = false;
+        Debug.Log("Perdiste");
+    }
+
     #endregion
     #endregion
 }
