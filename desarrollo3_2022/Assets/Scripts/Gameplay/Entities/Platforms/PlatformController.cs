@@ -9,15 +9,22 @@ namespace Entities.Platforms
         #region VARIABLES
         #region SERIALIZED VARIABLES
 
+        [Header("Platform Speed Control")]
+        [SerializeField] private float startingPlatformVerticalSpeed = 1.0f;
         [SerializeField] private float timeForNextAugment = 5;
-        [SerializeField] private float augmentDuration = 3; 
-        [SerializeField] private float augmentValue = 0.001f;                                               
+        [SerializeField] private float augmentDuration = 3;
+        [SerializeField] private float augmentValue = 0.001f;
+
+
+        [Header("Obstacle Spawn")]
+        [SerializeField] private float startingObstacleSpawnRate = 0.1f;
+        [SerializeField] private float spawnRateAugment = 0.02f;
 
         #endregion
 
         #region STATIC VARIABLES
 
-        private static float platformVerticalSpeed = 1.0f;
+        private static float platformVerticalSpeed;
 
         #endregion
 
@@ -26,13 +33,20 @@ namespace Entities.Platforms
         #endregion
 
         #region PROPERTIES
-        public static float VerticalSpeed
+        public static float PlatformVerticalSpeed
         {
             get
             {
                 return platformVerticalSpeed;
             }
+            private set
+            {
+                platformVerticalSpeed = value;
+            }
         }
+
+        public static float ObstacleSpawnRate { get; private set; }
+
         #endregion
 
         #endregion
@@ -50,6 +64,8 @@ namespace Entities.Platforms
 
         private void Start()
         {
+            PlatformVerticalSpeed = startingPlatformVerticalSpeed;
+            ObstacleSpawnRate = startingObstacleSpawnRate;
             StartCoroutine(SecondsTimer());
         }
 
@@ -67,8 +83,13 @@ namespace Entities.Platforms
                 platformVerticalSpeed += augmentValue;
                 yield return null;
             }
-            if(GameManager.GameRunning)
+            if (GameManager.GameRunning)
+            {
                 StartCoroutine(SecondsTimer());
+                if (ObstacleSpawnRate < 1)
+                    ObstacleSpawnRate += spawnRateAugment;
+            }
+
         }
 
         #endregion

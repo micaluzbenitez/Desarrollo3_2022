@@ -12,26 +12,17 @@ namespace Entities.Platforms
         [SerializeField] private float minX = -2.75f;
         [SerializeField] private float maxX = 2.75f;
 
-        [Header("Speeds")]
-        [SerializeField] private float elevationSpeed = 1.0f;
-        //[SerializeField] private float sideSpeed = 1.0f;
 
-        [Header("Initial Y Positions")]
-        [SerializeField] private float distanceBetweenPlatforms = 2.1f;
-        
-
-        [Header("Reset Y Limit")]
-        [SerializeField] private Transform upperLimitTransform;
+        [Header("Obstacle Spawn")]
+        [SerializeField] private GameObject obstacle;
 
         #endregion
 
         #region STATIC VARIABLES
-
         #endregion
 
         #region PRIVATE VARIABLES
 
-        private float[] initialPositions; 
         private float resetYPos = -5.3f;
 
         #endregion
@@ -47,17 +38,19 @@ namespace Entities.Platforms
         #endregion
 
         #region PRIVATE METHODS
-        private void LateUpdate()
-        {
-            Elevate();
-        }
         private void Start()
         {
             SetRandomX();
         }
+
+        private void LateUpdate()
+        {
+            Elevate();
+        }
+        
         private void Elevate()
         {
-            float newY = transform.position.y + PlatformController.VerticalSpeed * Time.deltaTime;
+            float newY = transform.position.y + PlatformController.PlatformVerticalSpeed * Time.deltaTime;
             transform.position = new Vector3(transform.position.x, newY);
         }
         private void SetRandomX()
@@ -67,16 +60,34 @@ namespace Entities.Platforms
         }
         private void ResetPosition()
         {
+            obstacle.SetActive(false);
             SetRandomX();
             transform.position = new Vector3(transform.position.x, resetYPos);
+            SpawnEnemy();
         }
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if(collision.tag.Equals("ResetZone"))
+            if (collision.tag.Equals("ResetZone"))
             {
                 ResetPosition();
             }
         }
+
+        private void SpawnEnemy()
+        {
+            float rand = Random.Range(0.0f, 1.0f);
+            Debug.Log("Random: " + rand + "/ SpawnRate: " + PlatformController.ObstacleSpawnRate);
+            if (PlatformController.ObstacleSpawnRate > 1.0f || rand < PlatformController.ObstacleSpawnRate)
+            {
+                obstacle.SetActive(true);
+            }
+        }
+
+        private void ApplySpawnRateAugment()
+        {
+
+        }
+
         #endregion
         #endregion
     }

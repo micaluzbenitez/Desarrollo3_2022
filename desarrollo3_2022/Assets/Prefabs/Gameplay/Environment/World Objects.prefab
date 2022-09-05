@@ -513,9 +513,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe6b2c49a1694d547b610e6de7413f46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startingPlatformVerticalSpeed: 1
   timeForNextAugment: 5
   augmentDuration: 1
   augmentValue: 0.0003
+  startingObstacleSpawnRate: 0.2
+  spawnRateAugment: 0.0005
 --- !u!1 &3238700544997151021
 GameObject:
   m_ObjectHideFlags: 0
