@@ -517,8 +517,8 @@ MonoBehaviour:
   timeForNextAugment: 5
   augmentDuration: 1
   augmentValue: 0.0003
-  startingObstacleSpawnRate: 0.2
-  spawnRateAugment: 0.0005
+  startingObstacleSpawnRate: 0.1
+  spawnRateAugment: 0.02
 --- !u!1 &3238700544997151021
 GameObject:
   m_ObjectHideFlags: 0

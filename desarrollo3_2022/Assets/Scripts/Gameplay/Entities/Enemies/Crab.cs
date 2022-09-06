@@ -11,34 +11,11 @@ namespace Entities.Enemies
         [Tooltip("Controller distance down")]
         [SerializeField] private float distance = 0;
 
-        /// <summary>
-        /// Prueba
-        /// </summary>
-
-        private bool direction = true; //right
-        
-
-
         protected override void FixedUpdate()
         {
-            //base.FixedUpdate();
-
-            //if(direction)
-            //{
-            //    transform.position = new Vector3((transform.position.x + speed) * Time.deltaTime, transform.position.y);
-            //}
-            //else
-            //{
-            //    transform.position = new Vector3((transform.position.x - speed)*Time.deltaTime, transform.position.y);
-            //}
-
+            base.FixedUpdate();
             RaycastHit2D platformData = Physics2D.Raycast(platformController.position, Vector2.down, distance);
-            if (!platformData)
-            {
-                Turn();
-                //direction = !direction;
-            }
-
+            if (!platformData) Turn();
         }
 
         private void OnDrawGizmos()
