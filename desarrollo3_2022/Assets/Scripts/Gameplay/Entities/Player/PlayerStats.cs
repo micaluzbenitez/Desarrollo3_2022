@@ -9,8 +9,9 @@ namespace Entities.Player
         [Header("Player data")]
         [SerializeField] private int initialLife = 0;
 
-        //[SerializeField] 
-        private int life = 0;
+        public static Action<float, float, float> OnLoseLife;
+
+        public int life = 0;
 
         private void Awake()
         {
@@ -20,6 +21,7 @@ namespace Entities.Player
         public void LoseLife(int damage)
         {
             life -= damage;
+            OnLoseLife?.Invoke(life, 0, initialLife);
         }
     }
 }
