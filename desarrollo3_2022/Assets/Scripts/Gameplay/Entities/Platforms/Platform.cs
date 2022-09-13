@@ -21,9 +21,15 @@ namespace Entities.Platforms
         #region STATIC VARIABLES
         #endregion
 
+        #region PUBLIC VARIABLES
+        #endregion
+
         #region PRIVATE VARIABLES
 
-        private float resetYPos = -5.3f;
+        private float resetYPos = -5.5f;
+        private Rigidbody2D rb;
+
+        private float distanceToObstacle = 0.0f;
 
         #endregion
         #endregion
@@ -38,6 +44,11 @@ namespace Entities.Platforms
         #endregion
 
         #region PRIVATE METHODS
+        private void Awake()
+        {
+            rb = GetComponent<Rigidbody2D>();
+            distanceToObstacle = Vector3.Distance(obstacle.transform.position, transform.position);
+        }
         private void Start()
         {
             SetRandomX();
@@ -51,11 +62,12 @@ namespace Entities.Platforms
         private void Elevate()
         {
             float newY = transform.position.y + PlatformController.PlatformVerticalSpeed * Time.deltaTime;
-            transform.position = new Vector3(transform.position.x, newY);
+            //transform.position = new Vector3(transform.position.x, newY);
+            rb.MovePosition(new Vector2(rb.position.x, newY));
         }
         private void SetRandomX()
         {
-            float newX = minX + Random.Range(0, (Mathf.Abs(minX - maxX)));
+            float newX = minX + UnityEngine.Random.Range(0, (Mathf.Abs(minX - maxX)));
             transform.position = new Vector3(newX, transform.position.y);
         }
         private void ResetPosition()
@@ -75,17 +87,13 @@ namespace Entities.Platforms
 
         private void SpawnEnemy()
         {
-            float rand = Random.Range(0.0f, 1.0f);
+            float rand = UnityEngine.Random.Range(0.0f, 1.0f);
             Debug.Log("Random: " + rand + "/ SpawnRate: " + PlatformController.ObstacleSpawnRate);
             if (PlatformController.ObstacleSpawnRate > 1.0f || rand < PlatformController.ObstacleSpawnRate)
             {
+                obstacle.transform.position = new Vector3(transform.position.x, resetYPos + distanceToObstacle);
                 obstacle.SetActive(true);
             }
-        }
-
-        private void ApplySpawnRateAugment()
-        {
-
         }
 
         #endregion

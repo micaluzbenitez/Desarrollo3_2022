@@ -18,9 +18,11 @@ namespace Entities.Enemies
             rigidBody = GetComponent<Rigidbody2D>();
         }
 
-        protected virtual void FixedUpdate()
+        protected virtual void Update()
         {
-            rigidBody.velocity = new Vector2(speed, rigidBody.velocity.y); /// Move
+            //rigidBody.velocity = new Vector2(speed, rigidBody.velocity.y); /// Move
+            float newX = rigidBody.position.x + speed * Time.deltaTime;
+            rigidBody.MovePosition(new Vector2(newX, rigidBody.position.y));
         }
 
         protected virtual void Turn()
