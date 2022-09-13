@@ -29,7 +29,7 @@ namespace Entities.Enemies
         private void OnEnable() //Hacer cuando se resetea la plataforma y no cuando se hace enable
         {//Hacer un trigger al final de las plataformas y hacerlo girar ahí :D
             SetMovingSide();
-            speed = Random.Range(minSpeed, maxSpeed);
+            speedX = Random.Range(minSpeed, maxSpeed);
             spriteRenderer.color = Random.ColorHSV();
         }
 

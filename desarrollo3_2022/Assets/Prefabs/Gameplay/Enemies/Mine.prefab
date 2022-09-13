@@ -291,7 +291,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 5
-  speed: 1
+  speedX: 6
+  speedY: 6
   bullet: {fileID: 2859427435802551423}
   target: {fileID: 0}
   timePerShot: 5
+  upSpeed: 1
+  maxYPosition: 5.5

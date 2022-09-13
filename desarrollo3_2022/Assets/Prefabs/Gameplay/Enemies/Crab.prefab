@@ -145,7 +145,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 5
-  speed: 3
+  speedX: 3
+  speedY: 0
   leftLimit: {fileID: 0}
   rightLimit: {fileID: 0}
   startMovingRight: 0

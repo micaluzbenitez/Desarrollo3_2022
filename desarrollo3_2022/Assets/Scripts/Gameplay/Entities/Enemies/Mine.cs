@@ -16,6 +16,9 @@ namespace Entities.Enemies
         [Header("Shot data")]
         [SerializeField] private int timePerShot = 0;
 
+        [Header("Up movement")]
+        [SerializeField] private float maxYPosition = 0;
+
         private Timer timerPerShot = new Timer();
 
         protected override void Awake()
@@ -25,9 +28,16 @@ namespace Entities.Enemies
             timerPerShot.SetTimer(timePerShot, Timer.TIMER_MODE.DECREASE, true);
         }
 
-        private void Update()
+        protected override void Update()
         {
+            base.Update();
+            CheckUpLimit();
             UpdateTimerPerShot();
+        }
+
+        private void CheckUpLimit()
+        {
+            if (transform.position.y > maxYPosition) gameObject.SetActive(false);
         }
 
         private void UpdateTimerPerShot()

@@ -9,7 +9,8 @@ namespace Entities.Enemies
         [Header("Enemy data"), Tooltip("Damage dealt to the player if touched")]
         [SerializeField] protected int damage = 0;
         [Tooltip("Horizontal speed")]
-        [SerializeField] protected float speed = 0;
+        [SerializeField] protected float speedX = 0;
+        [SerializeField] protected float speedY = 0;
 
         protected Rigidbody2D rigidBody = null;
 
@@ -20,15 +21,15 @@ namespace Entities.Enemies
 
         protected virtual void Update()
         {
-            //rigidBody.velocity = new Vector2(speed, rigidBody.velocity.y); /// Move
-            float newX = rigidBody.position.x + speed * Time.deltaTime;
-            rigidBody.MovePosition(new Vector2(newX, rigidBody.position.y));
+            float newX = rigidBody.position.x + speedX * Time.deltaTime;
+            float newY = rigidBody.position.y + speedY * Time.deltaTime;
+            rigidBody.MovePosition(new Vector2(newX, newY));
         }
 
         protected virtual void Turn()
         {
             transform.eulerAngles = new Vector3(0, transform.eulerAngles.y + 180, 0);
-            speed *= -1;
+            speedX *= -1;
         }
 
         protected virtual void OnCollisionEnter2D(Collision2D collision)
